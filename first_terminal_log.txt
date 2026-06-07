@@ -1,0 +1,254 @@
+
+================================================================================
+======================= DIABETES RISK PREDICTION SYSTEM ========================
+================================================================================
+
+
+================================================================================
+                           PART 1: DATA PREPROCESSING                           
+================================================================================
+
+Loading dataset...
+✓ Dataset loaded successfully!
+
+Dataset Shape:
+Rows: 768, Columns: 9
+
+Dataset Info:
+<class 'pandas.DataFrame'>
+RangeIndex: 768 entries, 0 to 767
+Data columns (total 9 columns):
+ #   Column                    Non-Null Count  Dtype  
+---  ------                    --------------  -----  
+ 0   Pregnancies               768 non-null    int64  
+ 1   Glucose                   768 non-null    int64  
+ 2   BloodPressure             768 non-null    int64  
+ 3   SkinThickness             768 non-null    int64  
+ 4   Insulin                   768 non-null    int64  
+ 5   BMI                       768 non-null    float64
+ 6   DiabetesPedigreeFunction  768 non-null    float64
+ 7   Age                       768 non-null    int64  
+ 8   Outcome                   768 non-null    int64  
+dtypes: float64(2), int64(7)
+memory usage: 54.1 KB
+None
+
+Summary Statistics:
+       Pregnancies     Glucose  BloodPressure  SkinThickness     Insulin         BMI  DiabetesPedigreeFunction         Age     Outcome
+count   768.000000  768.000000     768.000000     768.000000  768.000000  768.000000                768.000000  768.000000  768.000000
+mean      3.845052  120.894531      69.105469      20.536458   79.799479   31.992578                  0.471876   33.240885    0.348958
+std       3.369578   31.972618      19.355807      15.952218  115.244002    7.884160                  0.331329   11.760232    0.476951
+min       0.000000    0.000000       0.000000       0.000000    0.000000    0.000000                  0.078000   21.000000    0.000000
+25%       1.000000   99.000000      62.000000       0.000000    0.000000   27.300000                  0.243750   24.000000    0.000000
+50%       3.000000  117.000000      72.000000      23.000000   30.500000   32.000000                  0.372500   29.000000    0.000000
+75%       6.000000  140.250000      80.000000      32.000000  127.250000   36.600000                  0.626250   41.000000    1.000000
+max      17.000000  199.000000     122.000000      99.000000  846.000000   67.100000                  2.420000   81.000000    1.000000
+
+Missing Values:
+Pregnancies                 0
+Glucose                     0
+BloodPressure               0
+SkinThickness               0
+Insulin                     0
+BMI                         0
+DiabetesPedigreeFunction    0
+Age                         0
+Outcome                     0
+dtype: int64
+✓ No missing values found!
+
+Identifying Invalid Zero Values...
+--------------------------------------------------------------------------------
+Glucose: 5 zero values found
+BloodPressure: 35 zero values found
+SkinThickness: 227 zero values found
+Insulin: 374 zero values found
+BMI: 11 zero values found
+
+Replacing Invalid Zeros with Median Values...
+--------------------------------------------------------------------------------
+Glucose: Replaced with median = 117.00
+BloodPressure: Replaced with median = 72.00
+SkinThickness: Replaced with median = 29.00
+Insulin: Replaced with median = 125.00
+BMI: Replaced with median = 32.30
+
+✓ Data cleaning completed successfully!
+
+✓ Cleaned dataset saved as 'diabetes_cleaned.csv'
+
+
+================================================================================
+                       PART 2: EXPLORATORY DATA ANALYSIS                        
+================================================================================
+
+Generating visualizations...
+
+✓ EDA visualizations saved as 'EDA_Visualizations.png'
+
+
+================================================================================
+                     PART 3: MODEL TRAINING AND EVALUATION                      
+================================================================================
+
+Preparing data for model training...
+Training set size: 614 samples
+Test set size: 154 samples
+
+Training multiple models...
+--------------------------------------------------------------------------------
+
+Training Logistic Regression...
+✓ Logistic Regression trained successfully!
+  Accuracy: 0.7078
+
+Training Decision Tree...
+✓ Decision Tree trained successfully!
+  Accuracy: 0.6818
+
+Training Random Forest...
+✓ Random Forest trained successfully!
+  Accuracy: 0.7792
+
+Training K-Nearest Neighbors...
+✓ K-Nearest Neighbors trained successfully!
+  Accuracy: 0.7532
+
+================================================================================
+                          MODEL PERFORMANCE COMPARISON                          
+================================================================================
+
+                     Accuracy Precision    Recall  F1 Score
+Logistic Regression  0.707792       0.6       0.5  0.545455
+Decision Tree        0.681818  0.553191  0.481481  0.514851
+Random Forest        0.779221  0.717391  0.611111      0.66
+K-Nearest Neighbors  0.753247      0.66  0.611111  0.634615
+
+================================================================================
+🏆 BEST MODEL: Random Forest
+🎯 ACCURACY: 0.7792 (77.92%)
+================================================================================
+
+✓ Model comparison saved as 'model_comparison.csv'
+
+✓ Model comparison chart saved as 'Model_Comparison.png'
+
+
+================================================================================
+                      PART 4: FEATURE IMPORTANCE ANALYSIS                       
+================================================================================
+
+Feature Importance Ranking:
+--------------------------------------------------------------------------------
+Glucose                  : 0.2741
+BMI                      : 0.1619
+DiabetesPedigreeFunction : 0.1250
+Age                      : 0.1130
+Insulin                  : 0.0912
+BloodPressure            : 0.0835
+Pregnancies              : 0.0808
+SkinThickness            : 0.0705
+
+✓ Feature importance chart saved as 'Feature_Importance.png'
+
+
+💡 INSIGHT: The most influential health indicators for diabetes prediction are:
+   2. Glucose (Importance: 0.2741)
+   6. BMI (Importance: 0.1619)
+   7. DiabetesPedigreeFunction (Importance: 0.1250)
+
+
+================================================================================
+                              READY FOR PREDICTION                              
+================================================================================
+
+Options:
+1. Make a new prediction
+2. Exit
+
+Enter your choice (1 or 2): 1
+
+================================================================================
+                      INTERACTIVE DIABETES RISK PREDICTION                      
+================================================================================
+
+Please enter patient health information:
+
+Pregnancies (number of times pregnant): 3
+Glucose (mg/dL): 137
+Blood Pressure (mm Hg): 110
+Skin Thickness (mm): 25
+Insulin (mu U/ml): 80
+BMI (Body Mass Index): 24
+Diabetes Pedigree Function (0.0 - 2.5): 0.4
+Age (years): 30
+
+================================================================================
+                              DIABETES RISK METER                               
+================================================================================
+
+█████░░░░░░░░░░░░░░░  🟢 LOW RISK
+
+Risk Probability: 26.0%
+================================================================================
+
+
+================================================================================
+                          PATIENT DIABETES RISK REPORT                          
+================================================================================
+
+📋 PATIENT SUMMARY
+--------------------------------------------------------------------------------
+Pregnancies                   : 3.0
+Glucose                       : 137.0
+Blood Pressure                : 110.0
+Skin Thickness                : 25.0
+Insulin                       : 80.0
+BMI                           : 24.0
+Diabetes Pedigree Function    : 0.4
+Age                           : 30.0
+
+--------------------------------------------------------------------------------
+🎯 PREDICTION RESULTS
+--------------------------------------------------------------------------------
+Prediction: NON-DIABETIC ✓
+Risk Category: LOW RISK
+Prediction Confidence: 26.0%
+
+--------------------------------------------------------------------------------
+📊 TOP CONTRIBUTING FACTORS
+--------------------------------------------------------------------------------
+1. Glucose (Importance: 0.2741, Value: 137.00)
+2. BMI (Importance: 0.1619, Value: 24.00)
+3. DiabetesPedigreeFunction (Importance: 0.1250, Value: 0.40)
+
+--------------------------------------------------------------------------------
+💊 RECOMMENDATIONS
+--------------------------------------------------------------------------------
+✓ Maintain healthy lifestyle with regular exercise and balanced diet.
+
+================================================================================
+
+
+Options:
+1. Make a new prediction
+2. Exit
+
+Enter your choice (1 or 2): 2
+
+================================================================================
+            Thank you for using the Diabetes Risk Prediction System!            
+================================================================================
+
+✓ All results and visualizations saved successfully!
+
+Generated Files:
+  - diabetes_cleaned.csv
+  - EDA_Visualizations.png
+  - Model_Comparison.png
+  - Feature_Importance.png
+  - model_comparison.csv
+
+================================================================================
+                        PROJECT COMPLETED SUCCESSFULLY!                         
+================================================================================
